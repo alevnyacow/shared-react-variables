@@ -1,0 +1,49 @@
+{
+  "name": "@alevnyacow/shared-react-variables",
+  "version": "0.0.1",
+  "description": "Easy and comfortable React state manager",
+  "main": "transpiled/index.js",
+  "scripts": {
+    "test": "jest",
+    "clean_transpiled": "del-cli --force ./transpiled",
+    "format": "prettier --config .prettierrc --write sources/**",
+    "lint": "eslint sources/**/*.ts --ext .ts",
+    "check": "npm run lint && npm run test",
+    "build": "npm run clean_transpiled && tsc",
+    "execute": "npm run build && node transpiled/index.js"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "state management",
+    "global state"
+  ],
+  "author": "alevnyacow",
+  "license": "MIT",
+  "devDependencies": {
+    "@testing-library/react": "^12.1.3",
+    "@types/jest": "^27.4.1",
+    "@types/react": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.10.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.5.1",
+    "react": "^17.0.2",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.6.2"
+  },
+  "types": "transpiled/index.d.ts",
+  "dependencies": {
+    "@alevnyacow/deep-js-proxy": "^0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alevnyacow/shared-react-variables.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alevnyacow/shared-react-variables/issues"
+  },
+  "homepage": "https://github.com/alevnyacow/shared-react-variables#readme"
+}
