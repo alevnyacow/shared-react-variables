@@ -1,6 +1,6 @@
 {
   "name": "@alevnyacow/shared-react-variables",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Easy and comfortable React state manager",
   "main": "transpiled/index.js",
   "scripts": {
@@ -48,5 +48,5 @@
   "bugs": {
     "url": "https://github.com/alevnyacow/shared-react-variables/issues"
   },
-  "homepage": "https://github.com/alevnyacow/shared-react-variables#readme"
+  "homepage": "https://codesandbox.io/s/react-shared-variables-example-f7feo7"
 }
