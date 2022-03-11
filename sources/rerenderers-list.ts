@@ -6,7 +6,8 @@ class RerenderersList {
     }
 
     private addForVariable = (variableId: string) => {
-        this._rerenderersData[variableId] = {};
+        this._rerenderersData[variableId] =
+            this._rerenderersData[variableId] || {};
     };
 
     private existsForVariable = (variableId: string) => {
