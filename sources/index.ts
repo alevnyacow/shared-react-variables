@@ -12,10 +12,10 @@ function createUseSharedVariable<T extends object>(initialState: T) {
     )(initialState);
 
     function useSharedVariable(rerenderOnChange = true) {
+        const rerenderer = useRerenderer();
+        const memoizedRerenderer = useCallback(rerenderer, []);
+        const rerenderIdentifier = useRef(v4());
         useEffect(() => {
-            const rerenderer = useRerenderer();
-            const memoizedRerenderer = useCallback(rerenderer, []);
-            const rerenderIdentifier = useRef(v4());
             rerenderersList.add(
                 variableIdentifier,
                 rerenderIdentifier.current,
