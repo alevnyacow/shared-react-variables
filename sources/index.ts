@@ -4,7 +4,11 @@ import { deepProxy } from "@alevnyacow/deep-js-proxy";
 import { useRerenderer } from "./use-rerenderer";
 import { rerenderersList } from "./rerenderers-list";
 
-function createUseSharedVariable<T extends object>(initialState: T) {
+type ReactVariableHook<T> = (rerenderOnChange?: boolean) => T;
+
+function createUseSharedVariable<T extends object>(
+    initialState: T
+): ReactVariableHook<T> {
     const variableIdentifier = v4();
     const sharedVariable = deepProxy(
         [rerenderersList.fire],
@@ -35,4 +39,4 @@ function createUseSharedVariable<T extends object>(initialState: T) {
     return useSharedVariable;
 }
 
-export { createUseSharedVariable };
+export { createUseSharedVariable, ReactVariableHook };
