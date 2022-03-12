@@ -9,7 +9,32 @@
 
 ## ✨ **About**
 
-Shared React variables provide you easy and comfortable mutable state management based on hooks. It's extremely simple - you generate a hook in one line and then you can use it anywhere to operate with your state! Also you can have any number of such state variables in your application.
+Shared React variables provide you easy and comfortable mutable state management based on hooks. It's extremely simple - you generate a hook in one line and then you can use it anywhere to operate with your state! Also you can have any number of such state variables in your application. 
+
+```tsx
+// creating timer state hook
+const useTimer = createUseSharedVariable({ ticks: 0 });
+
+const Timer = () => {
+    // using timer state
+    const timer = useTimer();
+    useEffect(() => {
+        setInterval(() => {
+            // state is mutable
+            timer.ticks++;
+        }, 1000);
+    }, []);
+
+    return <div>{timer.ticks}</div>
+};
+
+const AnotherTimerWithSameState = () => {
+    // using same timer state in another component
+    const timer = useTimer();
+
+    return <div>{timer.ticks}</div>
+};
+```
 
 ## 🔍 **Exported types**
 
