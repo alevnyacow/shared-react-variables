@@ -36,15 +36,9 @@ const AnotherTimerWithSameState = () => {
 };
 ```
 
-## 🔍 **Exported types**
-
-```ts
-type ReactVariableHook<T> = (rerenderOnChange?: boolean) => T;
-```
-
 ## 📖 **API**
 
-### <p align="center">createUseSharedVariable</p>
+### **1. createUseSharedVariable**
 #### Description
 Takes initial state as a parameter. Returns a hook can be imported and used anywhere in your application. When you use this hook, it returns you mutable global state. Whenever this state is changed component will be rerendered (this behaviour can be changed via *rerenderOnChange* flag in the hook).
 
@@ -59,6 +53,17 @@ Takes initial state as a parameter. Returns a hook can be imported and used anyw
 const useTimer = createUseSharedVariable({ ticks: 0 });
 
 export { useTimer }
+```
+
+
+## 🔍 **Exported types**
+
+### **1. ReactVariableHook**
+#### Description
+Describes signature of a hook which returns *createUseSharedVariable* method.
+#### Signature
+```ts
+type ReactVariableHook<T> = (rerenderOnChange?: boolean) => T;
 ```
 
 ## 💡 **Package usage example**

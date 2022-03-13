@@ -1,6 +1,6 @@
 {
   "name": "@alevnyacow/shared-react-variables",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easy and comfortable React state manager",
   "main": "transpiled/index.js",
   "scripts": {
