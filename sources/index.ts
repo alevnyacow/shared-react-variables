@@ -5,17 +5,20 @@ import { useRerenderer } from "./use-rerenderer";
 import { rerenderersList } from "./rerenderers-list";
 
 type ReactVariableHook<T> = (rerenderOnChange?: boolean) => T;
+type ReactVariableRewriteHook<T> = () => (
+    generator: (oldState: T) => T
+) => void;
 
-function createUseSharedVariable<T extends object>(
-    initialState: T
-): ReactVariableHook<T> {
+function createUseSharedVariable<T extends object>(initialState: T) {
     const variableIdentifier = v4();
-    const sharedVariable = deepProxy(
+    let sharedVariable = deepProxy(
         [rerenderersList.fire],
         variableIdentifier
     )(initialState);
 
-    function useSharedVariable(rerenderOnChange = true) {
+    const useSharedVariable: ReactVariableHook<T> = (
+        rerenderOnChange = true
+    ) => {
         const rerenderer = useRerenderer();
         const memoizedRerenderer = useCallback(rerenderer, []);
         const rerenderIdentifier = useRef(v4());
@@ -34,9 +37,18 @@ function createUseSharedVariable<T extends object>(
         }, []);
 
         return sharedVariable;
-    }
+    };
 
-    return useSharedVariable;
+    const useSharedVariableRewrite: ReactVariableRewriteHook<T> =
+        () => (generator: (oldState: T) => T) => {
+            sharedVariable = deepProxy(
+                [rerenderersList.fire],
+                variableIdentifier
+            )(generator(sharedVariable)) as T;
+            rerenderersList.fire(variableIdentifier);
+        };
+
+    return [useSharedVariable, useSharedVariableRewrite] as const;
 }
 
-export { createUseSharedVariable, ReactVariableHook };
+export { createUseSharedVariable, ReactVariableHook, ReactVariableRewriteHook };
