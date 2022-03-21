@@ -9,11 +9,18 @@
 
 ## ✨ **About**
 
-Shared React variables provide you easy and comfortable mutable state management based on hooks. It's extremely simple - you generate a hook in one line and then you can use it anywhere to operate with your state! Also you can have any number of such state variables in your application. 
+Shared React variables provide you easy and comfortable mutable state management based on hooks.
+
+## 🔍 **Example**
 
 ```tsx
-// creating timer state hook
-const useTimer = createUseSharedVariable({ ticks: 0 });
+const [
+    // returns a mutable state
+    useTimer,
+    // use it to rewrite the whole variable,
+    // normally you don't need it
+    useTimerRewrite
+] = createUseSharedVariable({ ticks: 0 });
 
 const Timer = () => {
     // using timer state
@@ -36,36 +43,6 @@ const AnotherTimerWithSameState = () => {
 };
 ```
 
-## 📖 **API**
-
-### **1. createUseSharedVariable**
-#### Description
-Takes initial state as a parameter. Returns a hook can be imported and used anywhere in your application. When you use this hook, it returns you mutable global state. Whenever this state is changed component will be rerendered (this behaviour can be changed via *rerenderOnChange* flag in the hook).
-
-#### Signature
-```ts
-<T extends object>(initialState: T) => ReactVariableHook<T>;
-```
-
-#### Usage example
-```ts
-// feel free to use this state hook anywhere!
-const useTimer = createUseSharedVariable({ ticks: 0 });
-
-export { useTimer }
-```
-
-
-## 🔍 **Exported types**
-
-### **1. ReactVariableHook**
-#### Description
-Describes signature of a hook which returns *createUseSharedVariable* method.
-#### Signature
-```ts
-type ReactVariableHook<T> = (rerenderOnChange?: boolean) => T;
-```
-
-## 💡 **Package usage example**
+## 💡 **Codesandbox**
 
 https://codesandbox.io/s/react-shared-variables-example-f7feo7

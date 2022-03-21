@@ -1,10 +1,10 @@
 {
   "name": "@alevnyacow/shared-react-variables",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Easy and comfortable React state manager",
   "main": "transpiled/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "npm run build && npm pack && cd ./tests/test-application && npm i && npm run test",
     "clean_transpiled": "del-cli --force ./transpiled",
     "format": "prettier --config .prettierrc --write sources/**",
     "lint": "eslint sources/**/*.ts --ext .ts",
