@@ -14,20 +14,14 @@ Shared React variables provide you easy and comfortable mutable state management
 ## 🔍 **Example**
 
 ```tsx
-const [
-    // returns a mutable object
-    useTimer,
-    // use it to rewrite the whole object,
-    // you don't need it usually
-    useTimerRewrite
-] = createUseSharedVariable({ ticks: 0 });
+import { createUseSharedVariable } from "@alevnyacow/shared-react-variables"; 
+
+const [useTimer] = createUseSharedVariable({ ticks: 0 });
 
 const Timer = () => {
-    // using shared react variable
     const timer = useTimer();
     useEffect(() => {
         setInterval(() => {
-            // object is mutable
             timer.ticks++;
         }, 1000);
     }, []);
