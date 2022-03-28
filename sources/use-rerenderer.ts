@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export function useRerenderer() {
+type Rerenderer = () => void;
+
+/**
+ * React hook returning a function that causes a rerender when called.
+ */
+function useRerenderer() {
     const [, setNewDummyObject] = useState({});
-    return () => setNewDummyObject({});
+    return (() => setNewDummyObject({})) as Rerenderer;
 }
+export { useRerenderer, Rerenderer };
