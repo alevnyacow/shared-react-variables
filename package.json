@@ -1,7 +1,7 @@
 {
   "name": "@alevnyacow/shared-react-variables",
-  "version": "2.0.4",
-  "description": "Easy and comfortable React state manager",
+  "version": "2.0.5",
+  "description": "Global mutable useState for React. For real!",
   "main": "transpiled/index.js",
   "scripts": {
     "test": "npm run build && npm pack && cd ./tests/test-application && npm i && npm run test",
