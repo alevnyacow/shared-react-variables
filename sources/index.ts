@@ -11,9 +11,9 @@ type ReactVariableRewriteHook<T> = () => (
 
 /**
  * Generates a tuple of two hooks: first hook is a React variable generator,
- * second hook can be used to rewrite a whole variable (you don't need this most likely).
+ * second hook can be used to rewrite a whole variable (you don't need this, most likely).
  *
- * @param initialState Initial state of shared React variable.
+ * @param initialState Initial state of a shared React variable.
  */
 function createUseSharedVariable<T extends object>(initialState: T) {
     const variableIdentifier = v4();
@@ -25,7 +25,7 @@ function createUseSharedVariable<T extends object>(initialState: T) {
     /**
      * React hook returning shared React variable.
      *
-     * @param rerenderOnChange Flag can be used to prevent a rerender on React variable changes, when set to true.
+     * @param rerenderOnChange Flag can be used to prevent a rerender on React variable changes, when set to false.
      */
     const useSharedVariable: ReactVariableHook<T> = (
         rerenderOnChange = true
