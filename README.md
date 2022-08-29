@@ -9,7 +9,7 @@
 
 ## ✨ **About**
 
-Shared React variables provide you easy and comfortable mutable state management based on hooks.
+Shared React variables provide you easy and comfortable global state management based on hooks. You can treat it like a **global mutable useState**. Isn't it awesome?
 
 ## 🔍 **Example**
 
@@ -30,7 +30,7 @@ const Timer = () => {
 };
 
 const AnotherTimerWithSameState = () => {
-    // using the same variable in another component
+    // using pretty same timer in another place
     const timer = useTimer();
 
     return <div>{timer.ticks}</div>
